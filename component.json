@@ -1,0 +1,424 @@
+{
+    "title": "PostgreSQLManagementClient",
+    "description": "The Microsoft Azure management API provides create, read, update, and delete functionality for Azure PostgreSQL resources including servers, databases, firewall rules, log files and configurations with new business model.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/postgresql/2017-12-01-preview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists all of the available REST API operations.",
+            "description": "Lists all of the available REST API operations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CheckNameAvailability_Execute": {
+            "main": "./lib/actions/CheckNameAvailability_Execute.js",
+            "title": "Check the availability of name for resource",
+            "description": "Check the availability of name for resource",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CheckNameAvailability_Execute.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LocationBasedPerformanceTier_List": {
+            "main": "./lib/actions/LocationBasedPerformanceTier_List.js",
+            "title": "List all the performance tiers at specified location in a given subscription.",
+            "description": "List all the performance tiers at specified location in a given subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LocationBasedPerformanceTier_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_List": {
+            "main": "./lib/actions/Servers_List.js",
+            "title": "List all the servers in a given subscription.",
+            "description": "List all the servers in a given subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_ListByResourceGroup": {
+            "main": "./lib/actions/Servers_ListByResourceGroup.js",
+            "title": "List all the servers in a given resource group.",
+            "description": "List all the servers in a given resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_Delete": {
+            "main": "./lib/actions/Servers_Delete.js",
+            "title": "Deletes a server.",
+            "description": "Deletes a server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_Get": {
+            "main": "./lib/actions/Servers_Get.js",
+            "title": "Gets information about a server.",
+            "description": "Gets information about a server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_Update": {
+            "main": "./lib/actions/Servers_Update.js",
+            "title": "Updates an existing server. The request body can contain one to many of the properties present in the normal server definition.",
+            "description": "Updates an existing server. The request body can contain one to many of the properties present in the normal server definition.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Servers_Create": {
+            "main": "./lib/actions/Servers_Create.js",
+            "title": "Creates a new server, or will overwrite an existing server.",
+            "description": "Creates a new server, or will overwrite an existing server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Servers_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Replicas_ListByServer": {
+            "main": "./lib/actions/Replicas_ListByServer.js",
+            "title": "List all the replicas for a given server.",
+            "description": "List all the replicas for a given server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Replicas_ListByServer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Configurations_ListByServer": {
+            "main": "./lib/actions/Configurations_ListByServer.js",
+            "title": "List all the configurations in a given server.",
+            "description": "List all the configurations in a given server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Configurations_ListByServer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Configurations_Get": {
+            "main": "./lib/actions/Configurations_Get.js",
+            "title": "Gets information about a configuration of server.",
+            "description": "Gets information about a configuration of server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Configurations_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Configurations_CreateOrUpdate": {
+            "main": "./lib/actions/Configurations_CreateOrUpdate.js",
+            "title": "Updates a configuration of a server.",
+            "description": "Updates a configuration of a server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Configurations_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_ListByServer": {
+            "main": "./lib/actions/Databases_ListByServer.js",
+            "title": "List all the databases in a given server.",
+            "description": "List all the databases in a given server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_ListByServer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_Delete": {
+            "main": "./lib/actions/Databases_Delete.js",
+            "title": "Deletes a database.",
+            "description": "Deletes a database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_Get": {
+            "main": "./lib/actions/Databases_Get.js",
+            "title": "Gets information about a database.",
+            "description": "Gets information about a database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Databases_CreateOrUpdate": {
+            "main": "./lib/actions/Databases_CreateOrUpdate.js",
+            "title": "Creates a new database or updates an existing database.",
+            "description": "Creates a new database or updates an existing database.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Databases_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "FirewallRules_ListByServer": {
+            "main": "./lib/actions/FirewallRules_ListByServer.js",
+            "title": "List all the firewall rules in a given server.",
+            "description": "List all the firewall rules in a given server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/FirewallRules_ListByServer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "FirewallRules_Delete": {
+            "main": "./lib/actions/FirewallRules_Delete.js",
+            "title": "Deletes a server firewall rule.",
+            "description": "Deletes a server firewall rule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/FirewallRules_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "FirewallRules_Get": {
+            "main": "./lib/actions/FirewallRules_Get.js",
+            "title": "Gets information about a server firewall rule.",
+            "description": "Gets information about a server firewall rule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/FirewallRules_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "FirewallRules_CreateOrUpdate": {
+            "main": "./lib/actions/FirewallRules_CreateOrUpdate.js",
+            "title": "Creates a new firewall rule or updates an existing firewall rule.",
+            "description": "Creates a new firewall rule or updates an existing firewall rule.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/FirewallRules_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LogFiles_ListByServer": {
+            "main": "./lib/actions/LogFiles_ListByServer.js",
+            "title": "List all the log files in a given server.",
+            "description": "List all the log files in a given server.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LogFiles_ListByServer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

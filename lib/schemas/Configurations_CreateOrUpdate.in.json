@@ -1,0 +1,89 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "serverName": {
+            "required": true,
+            "type": "string"
+        },
+        "configurationName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Resource properties.",
+                    "properties": {
+                        "id": {
+                            "description": "Resource ID",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Resource type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Represents a Configuration.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of a configuration.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "allowedValues": {
+                            "description": "Allowed values of the configuration.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "dataType": {
+                            "description": "Data type of the configuration.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "defaultValue": {
+                            "description": "Default value of the configuration.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "description": {
+                            "description": "Description of the configuration.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "source": {
+                            "description": "Source of the configuration.",
+                            "type": "string"
+                        },
+                        "value": {
+                            "description": "Value of the configuration.",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

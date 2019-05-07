@@ -1,0 +1,156 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "serverName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Represents a server to be created.",
+            "properties": {
+                "location": {
+                    "description": "The location the resource resides in.",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Properties of the server.",
+                    "x-ms-client-flatten": false,
+                    "discriminator": {
+                        "propertyName": "createMode"
+                    },
+                    "properties": {
+                        "createMode": {
+                            "description": "The mode to create a new server.",
+                            "enum": [
+                                "Default",
+                                "PointInTimeRestore",
+                                "GeoRestore",
+                                "Replica"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "CreateMode"
+                            }
+                        },
+                        "sslEnforcement": {
+                            "description": "Enable ssl enforcement or not when connect to server.",
+                            "enum": [
+                                "Enabled",
+                                "Disabled"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": false,
+                                "name": "SslEnforcementEnum"
+                            }
+                        },
+                        "storageProfile": {
+                            "description": "Storage profile of a server.",
+                            "properties": {
+                                "backupRetentionDays": {
+                                    "description": "Backup retention days for the server.",
+                                    "type": "integer"
+                                },
+                                "geoRedundantBackup": {
+                                    "description": "Enable Geo-redundant or not for server backup.",
+                                    "enum": [
+                                        "Enabled",
+                                        "Disabled"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "GeoRedundantBackup"
+                                    }
+                                },
+                                "storageMB": {
+                                    "description": "Max storage allowed for a server.",
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "version": {
+                            "description": "Server version.",
+                            "enum": [
+                                "9.5",
+                                "9.6"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "ServerVersion"
+                            }
+                        }
+                    },
+                    "required": [
+                        "createMode"
+                    ]
+                },
+                "sku": {
+                    "description": "The SKU (pricing tier) of the server.",
+                    "properties": {
+                        "capacity": {
+                            "description": "The scale up/out capacity, representing server's compute units.",
+                            "format": "int32",
+                            "minimum": 0,
+                            "type": "integer"
+                        },
+                        "family": {
+                            "description": "The family of hardware.",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.",
+                            "type": "string"
+                        },
+                        "size": {
+                            "description": "The size code, to be interpreted by resource as appropriate.",
+                            "type": "string"
+                        },
+                        "tier": {
+                            "description": "The tier of the particular SKU, e.g. Basic.",
+                            "enum": [
+                                "Basic",
+                                "GeneralPurpose",
+                                "MemoryOptimized"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "SkuTier"
+                            }
+                        }
+                    },
+                    "type": "object"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Application-specific metadata in the form of key-value pairs.",
+                    "type": "object"
+                }
+            },
+            "required": [
+                "properties",
+                "location"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

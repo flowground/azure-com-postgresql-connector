@@ -1,0 +1,78 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "serverName": {
+            "required": true,
+            "type": "string"
+        },
+        "firewallRuleName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "Resource properties.",
+                    "properties": {
+                        "id": {
+                            "description": "Resource ID",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "type": {
+                            "description": "Resource type.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Represents a server firewall rule.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of a firewall rule.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "endIpAddress": {
+                            "description": "The end IP address of the server firewall rule. Must be IPv4 format.",
+                            "pattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
+                            "type": "string"
+                        },
+                        "startIpAddress": {
+                            "description": "The start IP address of the server firewall rule. Must be IPv4 format.",
+                            "pattern": "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "startIpAddress",
+                        "endIpAddress"
+                    ]
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

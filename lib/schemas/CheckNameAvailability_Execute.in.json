@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Request from client to check resource name availability.",
+            "properties": {
+                "name": {
+                    "description": "Resource name to verify.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Resource type used for verification.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
